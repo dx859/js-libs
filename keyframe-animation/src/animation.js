@@ -1,10 +1,19 @@
-'use strict'
+'use strict';
+
+// 初始化状态
+var STATE_INITIAL = 0;
+// 开始状态
+var STATE_START = 1;
+// 停止状态
+var STATE_STOP = 2;
 
 /**
  * 帧动画库类
  */
 function Animation() {
-
+  this.taskQueue = [];
+  this.index = 0;
+  this.state = STATE_INITIAL;
 }
 
 /**
