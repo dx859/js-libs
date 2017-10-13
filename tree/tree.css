@@ -1,0 +1,42 @@
+ul, ol { 
+    list-style: none;
+}
+ul, ol, li, p {
+    padding: 0;
+    margin: 0;
+}
+.tree .tree-node {
+    padding-left: 24px;
+    background-image: url(32px.png);
+    background-position: -292px -4px;
+    background-repeat: repeat-y;
+}
+
+.tree .tree-node-last {
+    background: 0;
+}
+
+
+.tree .tree-node[close] ul {
+    display: none;
+}
+
+.tree .tree-icon {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    vertical-align: -5px;
+    background-image: url(32px.png);
+    background-position: -68px -4px;
+    margin-left: -24px;
+}
+
+.tree .tree-node[haschild]> p .tree-icon{
+
+    background-position: -132px -4px;
+    background-repeat: repeat-y;
+}
+
+.tree .tree-node[haschild][close] p>.tree-icon {
+    background-position: -100px -4px;
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./tree.css">
+    <title>Document</title>
+    <script src="./element.js"></script>
+    <script src="./tree.js"></script>
+    <script>
+
+        window.onload = function () {
+
+            var data = [{ "text": "总部", "code": "zb", "children": [{ "text": "材料公司", "code": "zb.099", "children": [{ "text": "武汉材料公司", "code": "zb.099.098", "children": [], "active": true, "state": { "selected": true } }], "active": true, "state": { "selected": true } }, { "text": "采招公司", "code": "zb.001", "children": [], "active": false, "state": { "selected": true } }, { "text": "采购深圳公司", "code": "zb.cg003", "children": [], "active": true }], "active": true, "state": { "selected": true } }];
+            var node = document.getElementById('tree')
+
+            
+            formatData(data)
+            new DxTree(node, data)
+            console.log(data)
+        }
+
+        function formatData(data) {
+            data.forEach(function(item) {
+                item.id = item.code
+                item.state = item.state ? item.state : {}  
+                item.state.disabled = !item.active
+                if (item.children.length > 0) {
+                    formatData(item.children)
+                }
+            });
+        }
+    </script>
+</head>
+
+<body>
+    <div id="tree" class="tree"></div>
+
+</body>
+
+</html>
