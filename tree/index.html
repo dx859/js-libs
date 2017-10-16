@@ -7,19 +7,23 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="./tree.css">
     <title>Document</title>
-    <script src="./element.js"></script>
-    <script src="./tree.js"></script>
+    <script src="./lib.js"></script>
     <script>
 
         window.onload = function () {
 
-            var data = [{ "text": "总部", "code": "zb", "children": [{ "text": "材料公司", "code": "zb.099", "children": [{ "text": "武汉材料公司", "code": "zb.099.098", "children": [], "active": true, "state": { "selected": true } }], "active": true, "state": { "selected": true } }, { "text": "采招公司", "code": "zb.001", "children": [], "active": false, "state": { "selected": true } }, { "text": "采购深圳公司", "code": "zb.cg003", "children": [], "active": true }], "active": true, "state": { "selected": true } }];
+            var data = [{"text":"明源集团","code":"zb","children":[{"text":"经理层","code":"zb.zpgs","children":[{"text":"投资发展部","code":"zb.zpgs.zpcheshigs","children":[],"active":true,"state":{"selected":true,"disabled":false},"id":"zb.zpgs.zpcheshigs"}],"active":false,"state":{"selected":true,"disabled":false},"id":"zb.zpgs"},{"text":"行政部","code":"zb.gs0825","children":[],"active":true,"id":"zb.gs0825","state":{"disabled":false}},{"text":"公司1","code":"zb.11","children":[{"text":"gongs 1","code":"zb.11.123","children":[],"active":true,"state":{"selected":true,"disabled":false},"id":"zb.11.123"}],"active":true,"state":{"selected":true,"disabled":false},"id":"zb.11"},{"text":"new1","code":"zb.new1","children":[],"active":true,"state":{"selected":true,"disabled":false},"id":"zb.new1"},{"text":"新公司1202","code":"zb.n1202","children":[],"active":true,"state":{"selected":true,"disabled":false},"id":"zb.n1202"},{"text":"1226公司","code":"zb.1226gs","children":[],"active":true,"state":{"selected":true,"disabled":false},"id":"zb.1226gs"},{"text":"0213公司","code":"zb.0213gs","children":[],"active":true,"id":"zb.0213gs","state":{"disabled":false}},{"text":"删除公司","code":"zb.scgs","children":[],"active":true,"state":{"selected":true,"disabled":false},"id":"zb.scgs"},{"text":"明源-001","code":"zb.20141226001","children":[],"active":true,"state":{"selected":true,"disabled":true},"id":"zb.20141226001"},{"text":"明源-003","code":"zb.20141226003","children":[],"active":true,"state":{"selected":true,"disabled":false},"id":"zb.20141226003"},{"text":"北京公司","code":"zb.szgs","children":[],"active":true,"id":"zb.szgs","state":{"disabled":false}},{"text":"深圳明源","code":"zb.sz01","children":[],"active":true,"state":{"selected":true,"disabled":false},"id":"zb.sz01"},{"text":"上海明源","code":"zb.sh01","children":[],"active":true,"id":"zb.sh01","state":{"disabled":false}},{"text":"明源-002","code":"zb.20141226002","children":[],"active":true,"state":{"selected":true,"disabled":false},"id":"zb.20141226002"}],"active":true,"state":{"selected":true,"disabled":false},"id":"zb"}];
             var node = document.getElementById('tree')
 
             
             formatData(data)
-            new DxTree(node, data)
+            var dxtree = new DxTree(node, data)
             console.log(data)
+
+            var btn = document.getElementById('selected')
+            btn.onclick = function() {
+                var data = dxtree.selected();
+            }
         }
 
         function formatData(data) {
@@ -32,12 +36,13 @@
                 }
             });
         }
+
     </script>
 </head>
 
 <body>
-    <div id="tree" class="tree"></div>
-
+    <div id="tree" class="dxtree"></div>
+    <button id="selected">selected</button>
 </body>
 
 </html>
